@@ -1,7 +1,10 @@
 import { io, Socket } from "socket.io-client";
 
 const RAW_SERVER_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3001";
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  (process.env.NODE_ENV === "production"
+    ? "https://traitor-production.up.railway.app"
+    : "http://localhost:3001");
 const SERVER_URL = RAW_SERVER_URL.trim().replace(/\/+$/, "");
 
 let socket: Socket | null = null;
