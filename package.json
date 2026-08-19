@@ -2,13 +2,23 @@
   "name": "traitors",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "concurrently -n server,client -c red,cyan \"npm.cmd run dev --prefix server\" \"npm.cmd run dev --prefix client\"",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client",
     "build": "cd server && npm install && npm run build",
-    "start": "node server/dist/index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "uuid": "^11.1.0"
   }
 }
