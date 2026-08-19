@@ -27,18 +27,14 @@ import {
 import type { Role, RoomState } from "./types.js";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
-const allowedOrigins = (process.env.CLIENT_URL ?? "http://localhost:3000")
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
 
 const app = express();
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: "*" }));
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  cors: { origin: allowedOrigins, methods: ["GET", "POST"] },
+  cors: { origin: "*", methods: ["GET", "POST"] },
   transports: ["websocket", "polling"],
 });
 
